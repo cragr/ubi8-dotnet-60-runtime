@@ -50,7 +50,7 @@ COPY ./s2i/bin/ /usr/libexec/s2i
 # - aspnetcore-runtime-*: provides the .NET runtime and ASP.NET Core shared framework.
 # - nss_wrapper: used by the 'generate_container_user' script.
 # - findutils: provides 'find' which is used by the 'assemble' script.
-RUN INSTALL_PKGS="aspnetcore-runtime-6.0 nss_wrapper findutils https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/glibc-2.34-60.el9.x86_64.rpm https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/glibc-common-2.34-60.el9.x86_64.rpm https://mirror.stream.centos.org/9-stream/BaseOS/x86_64/os/Packages/glibc-minimal-langpack-2.34-60.el9.x86_64.rpm" && \
+RUN INSTALL_PKGS="aspnetcore-runtime-6.0 nss_wrapper findutils" && \
     yum install -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y && \
